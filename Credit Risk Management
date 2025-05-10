@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+# Parametersnp.random.seed(42)
+time_intervals = 10 # Simulating for 10 time intervals (e.g., hours)
+initial_cash = 10000 # Initial cash balance
+inflows = np.random.uniform(500, 1500, size=time_intervals) # Random inflows
+outflows = np.random.uniform(700, 2000, size=time_intervals) # Random outflows
+# Simulate cash balance over time
+cash_balance = [initial_cash]
+for inflow, outflow in zip(inflows, outflows):
+new_balance = cash_balance[-1] + inflow - outflow
+cash_balance.append(new_balance)
+# Plotting the results
+plt.plot(cash_balance, marker='o')
+plt.title('Intra-day Liquidity Simulation')
+plt.xlabel('Time Intervals')
+plt.ylabel('Cash Balance')
+plt.xticks(range(time_intervals + 1))
+plt.grid()
+plt.show()
